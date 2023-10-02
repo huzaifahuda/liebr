@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend&family=Poppins:wght@400;600;700&display=swap");
+
+* {
+    font-family: "Lexend", sans-serif;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background-color: #fafafa;
+}
+
+.bg-red {
+    background: #e61c1c;
+}
+
+.btn-red {
+    background-color: #e61c1c;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    height: 40px;
+}
+
+.btn-red:hover {
+    background-color: #cf1717;
+    color: #fff;
+}
+
+.btn-red-outline {
+    border: 2px solid #e61c1c;
+    color: #cf1717;
+    height: 40px;
+}
+
+.btn-red-outline:hover {
+    border: 2px solid #e61c1c;
+    color: #cf1717;
+}
+
+
+.li-navbar {
+    display: inline-block;
+    position: relative;
+    color: #ffffff;
+}
+
+.li-navbar::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.li-navbar:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.showtabledata {
+    box-shadow: 0 10px 15px #eee;
+}
+.sec-01 .top-para{
+    margin: 0 0.25rem;
+}
+
+.checkoutsection {
+    background-color: #fff;
+    box-shadow: 0 1px 3px #0000001a, 0 1px 2px #0000000f;
+    border-radius: 5px;
+    margin: 5px 0.25rem 10px;
+    padding: 24px !important;
+}
+
+.icon-box-icon{
+    height: 12px;
+    width: 12px;
+    border-radius: 999px;
+}
+
+.bgicon{
+    background-color: #eee;
+    padding: 20px;
+    border-radius: 50%;
+    width: 100px;
+}
+
+/* dashboard */
+.hero-banner{
+    background-color: #e61c1c;
+    height: 341px;
+    width: 100%;
+    border-radius: 0 0 0 120px;
+}
+
+.dash-icon{
+    width: 22px;
+}
+.fa-less-than{
+    font-size: 32px;
+}
+.anchortext{
+    text-decoration: none;
+    color: #000;
+}
+.dash-head{
+    font-size: 20px;
+    margin: 0;
+}
+.dropdown-menu{
+    left: -84px !important;
+}
