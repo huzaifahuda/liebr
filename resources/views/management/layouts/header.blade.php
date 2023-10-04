@@ -12,7 +12,7 @@
     <!-- Favicon-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <link rel="icon" href="{{asset('management/images/load.png')}}"
+    <link rel="icon" href="{{asset('panel/img/liber-new.png')}}"
           type="image/x-icon">
     <!-- Plugins Core Css -->
     <link href="{{asset('management/css/app.min.css')}}" rel="stylesheet">
@@ -66,7 +66,7 @@
                data-target="#navbar-collapse" aria-expanded="false"></a>
             <a href="#" onClick="return false;" class="bars"></a>
             <a class="navbar-brand" href="/">
-                <img height="35px" src="{{asset('management/images/load.png')}}" alt="{{config('app.dashboard')}}" />
+                <img height="35px" src="{{asset('panel/img/liber-new.png')}}" alt="{{config('app.dashboard')}}" />
             </a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse">

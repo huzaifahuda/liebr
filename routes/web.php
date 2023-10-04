@@ -47,7 +47,7 @@ Route::middleware(['auth'])
 
 //    Categories Routes
 
-        Route::resource('admin/categories',CategoriesController::class);
+        Route::resource('admin/categories',\App\Http\Controllers\management\CategoryController::class);
 
         //keyword
         Route::resource('admin/keyword',App\Http\Controllers\Management\KeywordController::class);

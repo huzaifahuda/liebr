@@ -68,15 +68,8 @@
                         </ul>
                     </div>
                 </div>
-                @php
-                    $bl = $_GET['type'];
-                @endphp
-                <form action="{{route('categories.store')}}?type={{$bl}}"  method="POST" enctype="multipart/form-data">
+                <form action="{{route('categories.store')}}"  method="POST" enctype="multipart/form-data">
                     @csrf
-
-                    @php
-                    @endphp
-
                     <div class="row">
                         <div class="col-md-8">
                             <div class="card py-4">
@@ -95,58 +88,18 @@
                                     <div class="row my-2">
                                         <div class=" col-12">
                                        <label for="email_address1">   <strong>    Description </strong></label>
-                                            <textarea value="{{old('erp_order_message') }}" type="text" name="description"
+                                            <textarea  type="text" name="description"
                                                       id="erp_order_message"  class="ckeditor form-control choices" cols="30"
                                                       rows="10"
-                                            ></textarea>
+                                            >{{old('description') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card py-4">
 
-                                <div class="header">
-                                    <div class="row">
-                                        <div class=" col-12">
-                                            <label for="email_address1"> <strong> Meta Title </strong></label>
-                                            <div class="form-line">
-                                                <input type="text" id="erp_question_text"
-                                                       class="form-control" name="meta_title"
-                                                       placeholder="Meta Title">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row my-2">
-                                        <div class=" col-12">
-                                            <label for="email_address1">   <strong>  Meta Description </strong></label>
-                                            <textarea value="{{old('erp_order_message') }}" type="text" name="meta_description"
-                                                      id="erp_order_message"  class="ckeditor form-control choices" cols="30"
-                                                      rows="10"
-                                            ></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row my-4">
-                                        <div class=" col-12">
-                                            <label for="email_address1"> <strong> Meta Keywords </strong></label>
-
-                                            <div class="form-line">
-                                                <input type="text" id="erp_question_text"
-                                                       class="form-control" name="meta_keywords"
-                                                       placeholder="Meta Keywords">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card">
-
-
-
-
 
                                 <div class="header">
                                     <div class="row">
@@ -161,33 +114,11 @@
                                              <label for="email_address1">Status </label>
                                              <select class="form-control select2" name="status" id="Quiz-type" data-placeholder="Select">
                                             <option {{ old('duration') == 'days' ? 'Selected' : '' }}  value= 1>Publish</option>
-                                            <option {{ old('duration') == 'week' ? 'Selected' : '' }}  value= 0>draft</option>
+                                            <option {{ old('duration') == 'week' ? 'Selected' : '' }}  value= 0>Draft</option>
 
                                             </select>
                                         </div>
                                 </div>
-                                    <div class="row my-3">
-                                        <div class=" col-12">
-                                            <label for="email_address1">Parent Category</label>
-                                            <select class="form-control select2" name="parent_category" id="Quiz-type" data-placeholder="Select">
-                                                <option value=""> select </option>
-                                                @foreach($cate as $row)
-
-                                                    @php
-                                                     $rr = base64_decode($bl);
-                                                    @endphp
-
-                                                    @if($row->reference_type == $rr)
-
-                                                <option  value={{$row->id}}>{{$row->title}}</option>
-
-                                                    @endif
-
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                    </div>
 
                                     <div class="row my-3">
 
@@ -207,9 +138,6 @@
                                                     <div class="image-area mt-4"><img id="imageResult" src="#" alt="Category Image" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
 
                                                 </div>
-
-
-
                                     </div>
                                     </div>
                                 </div>

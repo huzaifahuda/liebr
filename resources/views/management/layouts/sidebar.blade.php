@@ -73,11 +73,11 @@
                         </ul>
                     </li>
                 @endcan
-                @can('countries-sidebar')
+                @can('category-sidebar')
                     <li>
-                        <a href="{{url('admin/countries')}}" >
+                        <a href="{{url('admin/categories')}}" >
                             <i class="fas fa-user"></i>
-                            <span>Countries</span>
+                            <span>Categories</span>
                         </a>
                     </li>
                 @endcan
@@ -131,7 +131,7 @@
         </div>
         <!-- #Menu -->
         <div class="copyright">
-            Powered By <a href="https://eliteblue.net/" class="text-dark d-block" target="_blank">Elite Blue Technologies</a>
+            Powered By <a href="https://eliteblue.net/" class="text-dark d-block" target="_blank">Pixels Soft</a>
         </div>
     </aside>
     <!-- #END# Left Sidebar -->

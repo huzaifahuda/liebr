@@ -1,9 +1,6 @@
-@php
-    $bl = $_GET['type'];
-@endphp
 @extends('management.layouts.master')
 @section('title')
-    Categories | {{base64_decode($bl)}}
+    Categories
 @endsection
 @section('content')
 
@@ -19,7 +16,7 @@
                             </li>
                             <li class="breadcrumb-item bcrumb-1">
                                 <a href="#">
-                                    {{base64_decode($bl)}}</a>
+                                    </a>
                             </li>
 
 
@@ -30,11 +27,9 @@
                         <div class="header">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
-                                 <a href="{{route('categories.create')}}?type={{$bl}}" type="button" class="btn btn-primary"> Add Category
+                                 <a href="{{route('categories.create')}}" type="button" class="btn btn-primary"> Add Category
                                  </a>
                             </div>
-
-
 
                             <div class="body table-responsive">
                                 <table class="table" id="myTable">
@@ -54,7 +49,7 @@
                                     @foreach($category as $row)
                                     <tr>
                                         <td>
-                                            <img style="" src="{{asset('images/media'.'/'.$row->image)}}?type={{$bl}}" height="60px" width="60px">
+                                            <img style="" src="{{asset('images/category'.'/'.$row->image)}}" height="60px" width="60px">
                                         </td>
                                         <td> {{$row->title}}</td>
 
@@ -68,15 +63,14 @@
                                             </td>
                                         @endif
                                             <td>
-                                                <a class="btn bg-blue btn-circle" href="{{route('categories.show',$row->id)}}?type={{$bl}}">
+                                                <a class="btn bg-blue btn-circle" href="{{route('categories.edit',$row->id)}}">
 
-                                                    <i class="material-icons" href="">edit</i>
+                                                    <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#exampleModalCenter{{$row->id}}">
-                                                    <i class="material-icons"> delete  </i>
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
 
-                                                @if ($row->status == '0')
 
                                                     <div class="modal fade" id="exampleModalCenter{{$row->id}}" tabindex="-1" role="dialog"
                                                          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -101,40 +95,12 @@
                                                                         @method('DELETE')
 
                                                                         <button type="submit" class="btn btn-info waves-effect">Delete</button>
-
                                                                     </form>
 
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                @else
-                                                    <div class="modal fade" id="exampleModalCenter{{$row->id}}" tabindex="-1" role="dialog"
-                                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content bg-danger">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title text-white " id="exampleModalCenterTitle" >Alert
-                                                                        <i class="fas fa-exclamation-triangle"></i></h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                            aria-label="Close">
-                                                                        <span aria-hidden="true" class="text-white">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body text-white">
-                                                                    Only Disabled Announcement will be deleted
-                                                                </div>
-                                                                <div class="modal-footer">
-
-                                                                    <button type="submit" class="btn btn-danger waves-effect"
-                                                                            data-dismiss="modal">Close</button>
-
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
 
                                             </td>
 
@@ -150,7 +116,7 @@
                         </div>
                     </div>
                 </form>
-
+            </div>
 
 
 @endsection

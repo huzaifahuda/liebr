@@ -1,9 +1,6 @@
-@php
-    $bl = $_GET['type'];
-@endphp
 @extends('management.layouts.master')
 @section('title')
-    Categories Edit | {{base64_decode($bl)}}
+    Categories Edit
 @endsection
 @section('content')
     <style>
@@ -71,17 +68,11 @@
                         </ul>
                     </div>
                 </div>
-                @php
-                    $bl = $_GET['type'];
-                @endphp
-
-                <form action="{{route('categories.update',$category->id)}}=?type={{$bl}}"  method="POST" enctype="multipart/form-data">
+{{--@dd($category)--}}
+                <form action="{{route('categories.update',$category->id)}}"  method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @method('PUT')
-
-                    @php
-                        @endphp
 
                     <div class="row">
                         <div class="col-md-8">
@@ -105,58 +96,16 @@
                                                       id="erp_order_message"  class="ckeditor form-control choices" cols="30"
                                                       rows="10">
 
-                                                {{$category->long_description}}
+                                                {{$category->description}}
                                             </textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card py-4">
 
-                                <div class="header">
-                                    <div class="row">
-                                        <div class=" col-12">
-                                            <label for="email_address1">   <strong>    Meta Title </strong></label>
-
-                                            <div class="form-line">
-                                                <input value=" {{$seo != null ? $seo->meta_title : ''}} "  type="text" id="erp_question_text"
-                                                       class="form-control" name="meta_title"
-                                                       placeholder="Meta Title">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row my-2">
-                                        <div class=" col-12">
-                                            <label for="email_address1">   <strong>  Meta Description </strong></label>
-                                            <textarea value="{{old('erp_order_message') }}" type="text" name="meta_description"
-                                                      id="erp_order_message"  class="ckeditor form-control choices" cols="30"
-                                                      rows="10">
-                                              {{$seo != null ? $seo->meta_description : ''}}
-                                            </textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row my-4">
-                                        <div class=" col-12">
-                                            <label for="email_address1">   <strong>    Meta Keywords  </strong></label>
-
-                                            <div class="form-line">
-                                                <input value="{{$seo != null ? $seo->meta_keywords : ''}}" type="text" id="erp_question_text"
-                                                       class="form-control" name="meta_keywords"
-                                                       placeholder="Meta Keywords">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
                         </div>
                         <div class="col-md-4">
                             <div class="card">
-
-
-
-
 
                                 <div class="header">
                                     <div class="row">
@@ -171,23 +120,6 @@
                                                 <option value="">Select</option>
                                                 <option {{$category->status == '1' ? 'selected' : ''}}   value= 1>Publish</option>
                                                 <option {{$category->status == '0' ? 'selected' : ''}}  value= 0>draft</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class=" col-12">
-                                            <label for="email_address1">Parent Category</label>
-                                            <select class="form-control select2" name="parent_category" id="Quiz-type" data-placeholder="Select">
-                                                <option value=""> select </option>
-                                                @foreach($all_category as $row)
-                                                    @php
-                                                        $rr = base64_decode($bl);
-                                                    @endphp
-                                                    @if($row->reference_type == $rr)
-                                                        <option {{$category->parent_category == $row->id ? 'selected' : ''}}   value={{$row->id}}>{{$row->title}} </option>
-                                                    @endif
-                                                @endforeach
 
                                             </select>
                                         </div>
@@ -212,7 +144,7 @@
                                                     <input type="file" name="image" accept=".jpg,.gif,.png"
                                                            class="main_file w-100 h-100 form-control position-absolute  opacity-0" />
                                                     <div class="img-thumb">
-                                                        <img class="main_img d-block w-100 h-100 position-absolute" src="{{asset('images/media'.'/'.$category->image)}}" alt="{{$category->title}}">
+                                                        <img class="main_img d-block w-100 h-100 position-absolute" src="{{asset('images/category'.'/'.$category->image)}}" alt="{{$category->title}}">
                                                     </div>
                                                 </div>
                                             </div>
