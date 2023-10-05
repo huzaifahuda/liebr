@@ -15,6 +15,10 @@ class CreateFlexPoolsTable extends Migration
     {
         Schema::create('flex_pools', function (Blueprint $table) {
             $table->id();
+            $table->integer('created_by');
+            $table->integer('client_id');
+            $table->integer('category_id');
+            $table->string('flexpoolname');
             $table->timestamps();
         });
     }
