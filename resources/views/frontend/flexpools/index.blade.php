@@ -16,16 +16,23 @@
             <div class="col-md-12">
                 <table class="table bg-danger showtabledata">
                     <tbody>
+{{--                    @dd('tets')--}}
                     @foreach($flexpools as $data)
                         <tr class="py-5">
-                            <td class="px-4 pt-2">{{$data->}} <small style="font-size: 10px;"> 0 FreeFlexers</small></td>
-                            <td class="text-end">
-                                <a href="#" class="btn btnredoutlinetable">
+                            <td class="px-4 pt-2">{{isset($data->category)  ? $data->category->title : 'Not Found'}} - {{$data->flexpoolname}} <small style="font-size: 10px;"> 0 FreeFlexers</small></td>
+                            <td class="text-end d-flex justify-content-end">
+                                <a href="{{route('flexpools.edit', base64_encode($data->id))}}" class="btn btnredoutlinetable">
                                     <img src="{{asset('panel/img/icon-edit-2.svg')}}" alt="Edit Icon">
                                 </a>
-                                <a href="#" class="btn btnredoutlinetable">
-                                    <img src="{{asset('panel/img/icon-trash.svg')}}" alt="Trash Icon">
-                                </a>
+                                <form action="{{route('flexpools.update', $data->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger waves-effect">
+                                        <img src="{{asset('panel/img/icon-trash.svg')}}" alt="Trash Icon">
+                                    </button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

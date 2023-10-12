@@ -26,9 +26,7 @@
                 <div class="card">
                         <div class="header">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-
-                                 <a href="{{route('categories.create')}}" type="button" class="btn btn-primary"> Add Category
-                                 </a>
+                                <a href="{{route('categories.create')}}" type="button" class="btn btn-primary"> Add Category</a>
                             </div>
 
                             <div class="body table-responsive">
@@ -64,12 +62,13 @@
                                         @endif
                                             <td>
                                                 <a class="btn bg-blue btn-circle" href="{{route('categories.edit',$row->id)}}">
-
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
                                                 <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float" data-toggle="modal" data-target="#exampleModalCenter{{$row->id}}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
+                                                <a href="{{route('skills.index')}}?p={{$row->id}}" type="button" class="btn btn-primary"> Skils</a>
+                                                <a href="" type="button" class="btn btn-primary"> Appearance </a>
 
 
                                                     <div class="modal fade" id="exampleModalCenter{{$row->id}}" tabindex="-1" role="dialog"

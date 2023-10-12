@@ -62,12 +62,7 @@
 
 
 </script>
-<script>
 
-
-
-
-</script>
 @yield('script')
 
 

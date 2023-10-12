@@ -62,7 +62,7 @@
                             <div class="dropdown-divider"></div>
                             <p style="padding: 4px 16px 0; margin: 0; font-size: 12px;">OTHERS</p>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Companies</a></li>
+                            <li><a class="dropdown-item" href="{{route('companies.index')}}">Companies</a></li>
                             <li><a class="dropdown-item" href="#">Financial overview</a></li>
                             <li><a class="dropdown-item" href="#">Statistics</a></li>
                             <li><a class="dropdown-item" href="#">Blocked FreeFlexers</a></li>

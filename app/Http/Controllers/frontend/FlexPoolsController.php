@@ -17,7 +17,7 @@ class FlexPoolsController extends Controller
      */
     public function index()
     {
-        $data['flexPools'] = FlexPools::get();
+        $data['flexpools'] = FlexPools::with('category')->get();
         return view('frontend.flexpools.index', $data);
     }
 
@@ -41,8 +41,6 @@ class FlexPoolsController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $data =$request->all();
         $data['created_by'] = Auth::user()->id;
         FlexPools::create($data);
@@ -59,19 +57,21 @@ class FlexPoolsController extends Controller
      */
     public function show(FlexPools $flexPools)
     {
-//        $data['flexPools'] = FlexPools::get();
-//        return view('flexpools.show', $data);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\FlexPools  $flexPools
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
-    public function edit(FlexPools $flexPools)
+    public function edit($id)
     {
-        //
+        $id = base64_decode($id);
+        $data['category'] = Category::whereStatus(1)->get();
+        $data['flexpools'] = FlexPools::findorfail($id);
+        return view('frontend.flexpools.edit', $data);
     }
 
     /**
@@ -79,21 +79,32 @@ class FlexPoolsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\FlexPools  $flexPools
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, FlexPools $flexPools)
+    public function update(Request $request, $id)
     {
-        //
+        $id = base64_decode($id);
+        request()->validate([
+            'flexpoolname' => 'required',
+        ]);
+
+        FlexPools::findorfail($id)->update($request->all());
+        return redirect()->back()
+            ->with('success','Flexpools updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\FlexPools  $flexPools
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(FlexPools $flexPools)
+    public function destroy(FlexPools $flexPools, $id)
     {
-        //
+        FlexPools::findorfail($id)->delete();
+
+
+        return redirect()->back()
+            ->with('wrong','FlexPools deleted successfully');
     }
 }

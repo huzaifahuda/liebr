@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Category extends Model
+class Skills extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'title',
-        'description',
-        'image',
-        'status',
+        'created_by',
+        'category_id',
         'slug',
     ];
 
@@ -49,9 +48,4 @@ class Category extends Model
         return $slug;
     }
 
-    public function flexpools(){
-        return $this->hasMany(FlexPools::class);
-    }
-
 }
-

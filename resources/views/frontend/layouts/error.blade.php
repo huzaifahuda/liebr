@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container">
 <div class="row">
 <div class="col-12">
 
@@ -23,14 +23,10 @@
     </div>
 @endif
 @if (\Session::has('wrong'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <h4 class="alert-heading">Error!</h4>
-        <hr>
-        <p class="mb-0 text-white">{!! \Session::get('wrong') !!}</p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+        <div class="alert alert-danger alert-dismissible fade show my-2" role="alert">
+            <strong>Success !</strong> {!! \Session::get('wrong') !!}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 @endif
 </div>
 </div>

@@ -115,3 +115,6 @@ body{
 .dropdown-menu{
     left: -84px !important;
 }
+.showtabledata td{
+    vertical-align: middle;
+}

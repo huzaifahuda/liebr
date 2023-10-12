@@ -20,9 +20,7 @@ Route::fallback(function () {
 });
 
 Route::get('/', [App\Http\Controllers\frontend\HomeContoller::class, 'index'])->name('/home');
-Route::get('/projects', [App\Http\Controllers\frontend\ProjectsController::class, 'index'])->name('/projects');
 Route::get('/checkout', [App\Http\Controllers\frontend\ChekoutController::class, 'index'])->name('/checkout');
-Route::resource('/flexpools', App\Http\Controllers\frontend\FlexpoolsController::class);
 
 // Route::get('/', function () {
 //     return view('frontend.index');
@@ -32,6 +30,14 @@ Route::resource('/flexpools', App\Http\Controllers\frontend\FlexpoolsController:
 
 Route::middleware(['auth'])
     ->group(function () {
+
+//        user routes
+        Route::resource('/flexpools', App\Http\Controllers\frontend\FlexpoolsController::class);
+        Route::resource('/companies', App\Http\Controllers\frontend\CompaniesController::class);
+        Route::resource('/projects', App\Http\Controllers\frontend\ProjectsController::class);
+
+
+//        admin routes
         Route::get('/adminpanel', function () {
             return redirect('admin/dashboard');
         });
@@ -48,6 +54,8 @@ Route::middleware(['auth'])
 //    Categories Routes
 
         Route::resource('admin/categories',\App\Http\Controllers\management\CategoryController::class);
+        Route::resource('admin/skills',\App\Http\Controllers\management\SkillsController::class);
+        Route::resource('admin/appearance',\App\Http\Controllers\management\CategoryController::class);
 
         //keyword
         Route::resource('admin/keyword',App\Http\Controllers\Management\KeywordController::class);
